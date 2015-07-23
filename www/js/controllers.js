@@ -2,13 +2,17 @@ angular.module('starter')
     .controller('ContatosCtrl', function($scope, pouchDB){
         var db = pouchDB('contatos'), pagina = 0;
 
+
         $scope.contatos = [];
+
 
         var ping = db.createIndex({
             index: {
                 fields: ['nome', 'type']
             }
         });
+
+        //teste comit i
 
         function whenUnblocked(){
             return ping;
@@ -37,7 +41,7 @@ angular.module('starter')
 
         $scope.loadMore = function (){
             find(pagina);
-        }
+        };
 
         $scope.salvarContato = function(contato){
             if(contato && contato.nome && contato.telefone){
@@ -67,11 +71,11 @@ angular.module('starter')
             } else {
                 alert('NÃÃÃÃÃO!');
             }
-        }
+        };
 
         $scope.editarContato = function(contato){
             $scope.contato = contato;
-        }
+        };
 
         $scope.excluirContato = function(contatoId){
             for(var i = 0, len = $scope.contatos.length; i < len; i++){
@@ -79,5 +83,5 @@ angular.module('starter')
                     $scope.contatos.splice(i, 1);
                 }
             }
-        }
+        };
     });
